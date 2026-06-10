@@ -794,6 +794,7 @@ a:visited {
 
   .h1 {
     line-height: 1;
+    font-size: var(--heading1-responsive);
     
     br {
       display: none;
