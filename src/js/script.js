@@ -14,59 +14,10 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-// // CURSOR ----------------------------------------------------
-// let customCursor = document.querySelector(".cursor");
 
-// document.addEventListener('mousemove', moveCursor);
-
-// function moveCursor(e) {
-//   let x = e.clientX;
-//   let y = e.clientY;
-//   customCursor.style.left = `${x - 7}px`;
-//   customCursor.style.top = `${y - 7}px`;
-// }
-
-// // HOVER
-// let menuItem = Array.from(document.querySelectorAll('a'));
-
-// menuItem.forEach(menuItem => {
-//   menuItem.addEventListener('mousemove', function () {
-//     customCursor.classList.add('square');
-//   })
-//   menuItem.addEventListener('mouseleave', function () {
-//     customCursor.classList.remove('square');
-//   })
-// })
-
-// CURSOR ----------------------------------------------------
-// let customCursor = document.querySelector(".cursor");
-// let scrollVelocity = 0;
-
-// lenis.on('scroll', ({ velocity }) => {
-//   scrollVelocity = velocity;
-// });
-
-// document.addEventListener('mousemove', moveCursor);
-
-// function moveCursor(e) {
-//   let x = e.clientX;
-//   let y = e.clientY;
-//   customCursor.style.left = `${x}px`;
-//   customCursor.style.top = `${y}px`;
-// };
 
 // // HOVER
 const menuItems = document.querySelectorAll(".menu-item");
-
-// menuItems.forEach(item => {
-//   item.addEventListener('mousemove', () => {
-//     customCursor.classList.add('square');
-//   })
-//   item.addEventListener('mouseleave', () => {
-//     customCursor.classList.remove('square');
-//   })
-// });
-
 const cursor = document.querySelector(".cursor");
 const items = document.querySelectorAll(".hover-cursor");
 
@@ -97,11 +48,19 @@ items.forEach((item) => {
   item.addEventListener("mouseleave", () => cursor.classList.remove("square"));
 });
 
-// SVG ITEMS HOVER ----------------------------------------------------
-document.querySelectorAll("svg rect").forEach((rect) => {
-  rect.addEventListener("mouseover", () => (rect.style.opacity = 1));
-  rect.addEventListener("mouseout", () => (rect.style.opacity = 0.1));
+
+
+// HERO BOX COLOR ----------------------------------------------------
+const box = document.querySelector("#hero-box");
+const scrollWatcher = document.querySelector(".scroll-watcher");
+
+box.addEventListener("click", () => {
+  console.log(e.target)
+  box.classList.toggle("clicked");
+  scrollWatcher.classList.toggle("clicked");
 });
+
+
 
 // MENU ITEMS SCROLL TO
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -117,14 +76,13 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
     if (id === "contact") {
       y += 10000;
-
-      const workSticky = document.querySelector(".heading-sticky");
-      workSticky.style.position = "relative";
     }
 
     lenis.scrollTo(y);
   });
 });
+
+
 
 // MENU ITEMS ----------------------------------------------------
 function setActive(id) {
@@ -160,35 +118,6 @@ window.addEventListener("scroll", () => {
     menuItems.forEach((i) => i.classList.remove("active"));
   }
 });
-
-// HERO BOX COLOR ----------------------------------------------------
-const box = document.querySelector("#hero-box");
-const scrollWatcher = document.querySelector(".scroll-watcher");
-
-box.addEventListener("click", () => {
-  // console.log(e.target)
-  box.classList.toggle("clicked");
-  scrollWatcher.classList.toggle("clicked");
-});
-
-const observer = new IntersectionObserver(
-  (entires) => {
-    entires.forEach((entry) => {
-      console.log(entry);
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      } else {
-        entry.target.classList.remove("show");
-      }
-    });
-  },
-  {
-    threshold: 1,
-  },
-);
-
-const hiddenElements = document.querySelectorAll(".hidden");
-hiddenElements.forEach((el) => observer.observe(el));
 
 
 
