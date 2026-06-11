@@ -8,5 +8,5 @@ const observer = new IntersectionObserver((entries, obs) => {
   });
 }, { threshold: 0, rootMargin: '0px 0px -100px 0px' });
 
-document.querySelectorAll('.heading-mask-text .text-wrapper .h1, .about-text:nth-child(2)')
+document.querySelectorAll('.heading-mask-text .text-wrapper .h1, .about-text .p, .technologies span, .work-section .heading .h1')
   .forEach(el => observer.observe(el));

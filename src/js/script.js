@@ -55,7 +55,7 @@ const box = document.querySelector("#hero-box");
 const scrollWatcher = document.querySelector(".scroll-watcher");
 
 box.addEventListener("click", () => {
-  console.log(e.target)
+  // console.log(e.target)
   box.classList.toggle("clicked");
   scrollWatcher.classList.toggle("clicked");
 });
@@ -75,7 +75,7 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     let y = el.getBoundingClientRect().top + window.pageYOffset;
 
     if (id === "contact") {
-      y += 10000;
+      y += 100000;
     }
 
     lenis.scrollTo(y);
