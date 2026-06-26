@@ -143,3 +143,49 @@ function update() {
 
 update();
 setInterval(update, 1000 * 60 * 60);
+
+
+
+
+
+
+
+const rects = document.querySelectorAll('#hero-artwork rect');
+const svg = document.querySelector('#hero-artwork');
+const hero = document.querySelector('.hero');
+
+const radius = 50;
+
+rects.forEach(rect => {
+  rect._opacity = 0.1;
+  rect._radius = radius + (Math.random() - 0.5) * 50;
+});
+
+hero.addEventListener('mousemove', e => {
+  const svgRect = svg.getBoundingClientRect();
+  const scaleX = svg.viewBox.baseVal.width / svgRect.width;
+  const scaleY = svg.viewBox.baseVal.height / svgRect.height;
+
+  const mx = (e.clientX - svgRect.left) * scaleX;
+  const my = (e.clientY - svgRect.top) * scaleY;
+
+  rects.forEach(rect => {
+    const cx = parseFloat(rect.getAttribute('x')) + parseFloat(rect.getAttribute('width')) / 2;
+    const cy = parseFloat(rect.getAttribute('y')) + parseFloat(rect.getAttribute('height')) / 2;
+
+    const dist = Math.sqrt((cx - mx) ** 2 + (cy - my) ** 2);
+    const lit = dist < rect._radius;
+
+    rect.style.transition = lit ? 'opacity 0.15s ease-out' : 'opacity 2s ease-out';
+    rect.style.opacity = lit ? 1 : 0.1;
+    rect._opacity = lit ? 1 : 0.1;
+  });
+});
+
+hero.addEventListener('mouseleave', () => {
+  rects.forEach(rect => {
+    rect.style.transition = 'opacity 2s ease-out';
+    rect.style.opacity = 0.1;
+    rect._opacity = 0.1;
+  });
+});
