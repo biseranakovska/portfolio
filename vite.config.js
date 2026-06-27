@@ -2,7 +2,7 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  root: ".",
+  root: "src",
   build: {
     emptyOutDir: true,
     assetsInlineLimit: 0,
