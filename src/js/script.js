@@ -14,8 +14,6 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-
-
 // // HOVER
 const menuItems = document.querySelectorAll(".menu-item");
 const cursor = document.querySelector(".cursor");
@@ -48,8 +46,6 @@ items.forEach((item) => {
   item.addEventListener("mouseleave", () => cursor.classList.remove("square"));
 });
 
-
-
 // HERO BOX COLOR ----------------------------------------------------
 const box = document.querySelector("#hero-box");
 const scrollWatcher = document.querySelector(".scroll-watcher");
@@ -59,8 +55,6 @@ box.addEventListener("click", () => {
   box.classList.toggle("clicked");
   scrollWatcher.classList.toggle("clicked");
 });
-
-
 
 // MENU ITEMS SCROLL TO
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -81,8 +75,6 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     lenis.scrollTo(y);
   });
 });
-
-
 
 // MENU ITEMS ----------------------------------------------------
 function setActive(id) {
@@ -119,10 +111,8 @@ window.addEventListener("scroll", () => {
   }
 });
 
-
-
 // age calculator
-const ageSpan = document.querySelector('#age');
+const ageSpan = document.querySelector("#age");
 const BIRTHDAY = { month: 2, day: 23, birthYear: 2006 };
 
 function getAge() {
@@ -144,24 +134,18 @@ function update() {
 update();
 setInterval(update, 1000 * 60 * 60);
 
-
-
-
-
-
-
-const rects = document.querySelectorAll('#hero-artwork rect');
-const svg = document.querySelector('#hero-artwork');
-const hero = document.querySelector('.hero');
+const rects = document.querySelectorAll("#hero-artwork rect");
+const svg = document.querySelector("#hero-artwork");
+const hero = document.querySelector(".hero");
 
 const radius = 50;
 
-rects.forEach(rect => {
+rects.forEach((rect) => {
   rect._opacity = 0.1;
   rect._radius = radius + (Math.random() - 0.5) * 50;
 });
 
-hero.addEventListener('mousemove', e => {
+hero.addEventListener("mousemove", (e) => {
   const svgRect = svg.getBoundingClientRect();
   const scaleX = svg.viewBox.baseVal.width / svgRect.width;
   const scaleY = svg.viewBox.baseVal.height / svgRect.height;
@@ -169,22 +153,28 @@ hero.addEventListener('mousemove', e => {
   const mx = (e.clientX - svgRect.left) * scaleX;
   const my = (e.clientY - svgRect.top) * scaleY;
 
-  rects.forEach(rect => {
-    const cx = parseFloat(rect.getAttribute('x')) + parseFloat(rect.getAttribute('width')) / 2;
-    const cy = parseFloat(rect.getAttribute('y')) + parseFloat(rect.getAttribute('height')) / 2;
+  rects.forEach((rect) => {
+    const cx =
+      parseFloat(rect.getAttribute("x")) +
+      parseFloat(rect.getAttribute("width")) / 2;
+    const cy =
+      parseFloat(rect.getAttribute("y")) +
+      parseFloat(rect.getAttribute("height")) / 2;
 
     const dist = Math.sqrt((cx - mx) ** 2 + (cy - my) ** 2);
     const lit = dist < rect._radius;
 
-    rect.style.transition = lit ? 'opacity 0.15s ease-out' : 'opacity 2s ease-out';
+    rect.style.transition = lit
+      ? "opacity 0.15s ease-out"
+      : "opacity 2s ease-out";
     rect.style.opacity = lit ? 1 : 0.1;
     rect._opacity = lit ? 1 : 0.1;
   });
 });
 
-hero.addEventListener('mouseleave', () => {
-  rects.forEach(rect => {
-    rect.style.transition = 'opacity 2s ease-out';
+hero.addEventListener("mouseleave", () => {
+  rects.forEach((rect) => {
+    rect.style.transition = "opacity 2s ease-out";
     rect.style.opacity = 0.1;
     rect._opacity = 0.1;
   });

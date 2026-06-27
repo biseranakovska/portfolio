@@ -18,7 +18,7 @@ export default defineConfig({
         labos: resolve(__dirname, "src/pages/labos.html"),
       },
     },
-    outDir: "dist",
+    outDir: resolve(__dirname, "dist"),
   },
   base: "/portfolio/",
 });
