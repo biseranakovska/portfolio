@@ -16,6 +16,7 @@ export default defineConfig({
         dockAndBramble: resolve(__dirname, "src/pages/dockAndBramble.html"),
         gamingDashboard: resolve(__dirname, "src/pages/gamingDashboard.html"),
         labos: resolve(__dirname, "src/pages/labos.html"),
+        allWorks: resolve(__dirname, "src/pages/all-projects.html"),
       },
     },
     outDir: resolve(__dirname, "dist"),
